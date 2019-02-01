@@ -4,11 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
 <meta name="renderer" content="webkit" />
-<title>回复量排行榜</title>
+<title>省直厅局</title>
 <link rel="stylesheet" type="text/css" href="css/index_jcwz.css">
 <link rel="stylesheet" type="text/css" href="css/common_2018.css">
 <script type="text/javascript" src="http://www.cnhubei.com/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://www.cnhubei.com/js/jquery.SuperSlide.2.1.1.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    
+    $(".jcwz_sztj_t_list .box:even").css("background-color","#f9f9f9");
+})
+</script>
+
+<script type="text/javascript">  
+ jQuery("#lmy_top_box").slide({ type:"menu",  titCell:".more", targetCell:".sub01", effect:"slideDown", delayTime:100, triggerTime:100  });   
+</script> 
 
 <!-- 引入vue -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -16,7 +27,7 @@
 </head>
 
 <body>
-<div id="jcwz_hfl">
+<div id="jcwz_sztj_three">
 <!-- 顶部导航 -->
 <div class="lmy_topnav_zw">
  <div class="lmy_top_mini_nav">
@@ -59,7 +70,7 @@
    </li> 
    <li class="right"><a href="">手机报</a><span>丨</span><a href="">手机荆楚网</a></li>
   </ul>
-  </div> 
+  </div>  
  </div>
 </div> 
 <!-- 顶部导航 end -->
@@ -76,13 +87,13 @@
 <div class="jcwz_nav" id="jczw01">
  <div class="w1200">
   <ul class="list_across">
-   <li class="first"><a href="./jcwz修改版本.html">首页</a></li>
-   <li><a href="./省直厅局修改1.0.html">省直厅局</a></li>
-   <li><a href="./市州区县.html">市州区县</a></li>
-   <li><a href="">每日回复</a></li>
-   <li><a href="">问政报告</a></li>
-   <li><a href="./回复量排行榜.html">回复率排行榜</a></li>
-   <li class="last"><a href="./满意度排行榜.html">满意度排行榜</a></li>
+    <li class="first"><a href="./home.html">首页</a></li>
+    <li><a href="./province.html">省直厅局</a></li>
+    <li><a href="./city.html">市州区县</a></li>
+    <li><a href="">每日回复</a></li>
+    <li><a href="">问政报告</a></li>
+    <li><a href="./reply.html">回复率排行榜</a></li>
+    <li class="last"><a href="./satisfied.html">满意度排行榜</a></li>
   </ul>
  </div>
 </div>
@@ -91,16 +102,40 @@
 <!-- 荆楚问政列表主体 -->
 <div class="w1200" id="jcwz_list_main">
  <div class="jcwz_list_left">
-  <div class="jcwz_position"><a href="./jcwz修改版本.html">首页</a> > <span>回复率排行榜</span></div>
-  <div class="blank0"></div>
-  
-  <div class="jcwz_lm">
-   <div class="jcwz_lm_nav"><strong>回复率排行榜</strong><span>回复率</span></div>
-   <div class="blank0"></div>   
-   <ul class="list_erect">  
-    <li v-for="(item,index) in replytoplist" :key="index"><span :class="'li'+(index+1)">{{index+1}}</span><a href="javascript:;">{{item.deptname}}</a><em>{{item.rate}}%</em></li>
-   </ul>
+  <div class="jcwz_position"><a href="home.html">首页</a> > <a href="province.html">省直厅局</a> > <span>{{dept_name}}</span></div>
+  <div class="blank20"></div>
+  <div class="jcwz_sztj_t">
+   <div class="jcwz_lm_nav"><strong>最新回复</strong>
+     <!-- <a href="">更多>></a> -->
+ </div>
+   <div class="blank10"></div>
+   <div class="jcwz_sztj_t_list">   
+   <div class="box" v-for="(item,index) in sztjnewreplylist" :key="index" v-if="sztjnewreplylist.length > 0">
+    <div class="time">{{item.created_at.substring(5,item.created_at.length-3)}}</div>
+    <div class="title"><a :href="'detail.html?dept_id='+dept_id+'&dept_name='+dept_name+'&id='+item.id">{{item.title}}未回应留言</a></div>
+    <div class="des">{{item.content.substring(0, 50) + (item.content.length > 50 ? '...' : '')}}</div>
+   </div>
+   <div class="box" v-if="sztjnewreplylist.length == 0">暂无数据</div>
+   </div>
   </div>
+  
+   <div class="blank20"></div>  
+  <div class="jcwz_sztj_t">
+   <div class="jcwz_lm_nav"><strong>未回应留言</strong>
+     <!-- <a href="">更多>></a> -->
+ </div>
+   <div class="blank0"></div>
+   <div class="jcwz_sztj_t_list"> 
+     <div class="box" v-for="(item,index) in sztjnotreplylist" :key="index" v-if="sztjnotreplylist.length > 0">
+          <div class="time">{{item.created_at.substring(5,item.created_at.length-3)}}</div>
+          <div class="title"><a :href="'detail.html?dept_id='+dept_id+'&dept_name='+dept_name+'&id='+item.id">{{item.title}}未回应留言</a></div>
+          <div class="des">{{item.content.substring(0, 50) + (item.content.length > 50 ? '...' : '')}}</div>
+     </div>  
+     <div class="box" v-if="sztjnotreplylist.length == 0">暂无数据</div>
+   </div>
+  </div>  
+  
+  
   
     
   
@@ -108,26 +143,30 @@
  <div class="jcwz_list_right">
   <div class="jcwz_lyrk">
    <a href="./index.html" class="link_btn"></a> 
-   <div class="blank10" style="height:50px"></div>  
+   <div class="blank10" style="height:50px"></div>
    <p><span class="left">电话：027-88567717</span> <span class="right">传真：027-88568153</span></p>
    <p><span class="left">QQ：2842635040</span> <span class="right">邮箱：2842635040@qq.com</span></p>
   </div> 
   
   <div class="blank0"></div>
   <div class="right_box">
-   <div class="nav_box01"><strong>最新回复</strong></div>
+   <div class="nav_box01"><strong>最新回复</strong>
+     <!-- <a href="">更多>></a> -->
+</div>
    <div class="blank0"></div>
    <ul class="list_across">
-        <li v-for="(item,index) in allsuglist1" :key="index" style="width:306px;overflow:hidden;"><a :href="'./三级页.html?id=' + item.id">{{item.title}}</a></li>
+        <li v-for="(item,index) in AlreadyReplylisty" :key="index"><a :href="'detail.html?id='+item.id">{{item.title.substring(0, 15) + (item.title.length > 15 ? '...' : '')}}</a></li>
    </ul>
   </div>
   
   <div class="blank0"></div>
   <div class="right_box">
-   <div class="nav_box02"><strong>未回应留言</strong></div>
+   <div class="nav_box02"><strong>未回应留言</strong>
+     <!-- <a href="">更多>></a> -->
+   </div>
    <div class="blank0"></div>
    <ul class="list_across">
-        <li v-for="(item,index) in allsuglist3" :key="index" style="width:306px;overflow:hidden;"><a :href="'./三级页.html?id=' + item.id">{{item.title}}</a></li>
+        <li v-for="(item,index) in notReplylisty" :key="index"><a :href="'detail.html?id='+item.id">{{item.title.substring(0, 15) + (item.title.length > 15 ? '...' : '')}}</a></li>
    </ul>
   </div>  
   
@@ -144,12 +183,9 @@
   <p>版权为 荆楚网 www.cnhubei.com 所有 未经同意不得复制或镜像 </p>  
   
  </div>
-</div>
+</div>  
 </div>
 </body>
 </html>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jcwz_hfl.js"></script>
-<script type="text/javascript">  
- jQuery("#lmy_top_box").slide({ type:"menu",  titCell:".more", targetCell:".sub01", effect:"slideDown", delayTime:100, triggerTime:100  });   
-</script>  
+<script type="text/javascript" src="js/jcwz_sztj_three.js"></script>

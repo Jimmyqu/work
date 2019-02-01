@@ -76,13 +76,13 @@
 <div class="jcwz_nav" id="jczw01">
  <div class="w1200">
   <ul class="list_across">
-   <li class="first"><a href="./jcwz修改版本.html">首页</a></li>
-   <li><a href="./省直厅局修改1.0.html">省直厅局</a></li>
-   <li><a href="./市州区县.html">市州区县</a></li>
+   <li class="first"><a href="./home.html">首页</a></li>
+   <li><a href="./province.html">省直厅局</a></li>
+   <li><a href="./city.html">市州区县</a></li>
    <li><a href="">每日回复</a></li>
    <li><a href="">问政报告</a></li>
-   <li><a href="./回复量排行榜.html">回复率排行榜</a></li>
-   <li class="last"><a href="./满意度排行榜.html">满意度排行榜</a></li>
+   <li><a href="./reply.html">回复率排行榜</a></li>
+   <li class="last"><a href="./satisfied.html">满意度排行榜</a></li>
   </ul>
  </div>
 </div>
@@ -91,7 +91,7 @@
 <!-- 荆楚问政列表主体 -->
 <div class="w1200" id="jcwz_list_main">
  <div class="jcwz_list_left">
-  <div class="jcwz_position"><a href="./jcwz修改版本.html">首页</a> > <span>满意度排行榜</span></div>
+  <div class="jcwz_position"><a href="./home.html">首页</a> > <span>满意度排行榜</span></div>
   <div class="blank0"></div>
   
   <div class="jcwz_lm">
@@ -118,7 +118,7 @@
    <div class="nav_box01"><strong>最新回复</strong></div>
    <div class="blank0"></div>
    <ul class="list_across">
-        <li v-for="(item,index) in allsuglist1" :key="index" style="width:306px;overflow:hidden;"><a :href="'./三级页.html?id=' + item.id">{{item.title}}</a></li>
+        <li v-for="(item,index) in allsuglist1" :key="index" style="width:306px;overflow:hidden;"><a :href="'./detail.html?id=' + item.id">{{item.title}}</a></li>
    </ul>
   </div>
   
@@ -127,7 +127,7 @@
    <div class="nav_box02"><strong>未回应留言</strong></div>
    <div class="blank0"></div>
    <ul class="list_across">
-        <li v-for="(item,index) in allsuglist3" :key="index" style="width:306px;overflow:hidden;"><a :href="'./三级页.html?id=' + item.id">{{item.title}}</a></li>
+        <li v-for="(item,index) in allsuglist3" :key="index" style="width:306px;overflow:hidden;"><a :href="'./detail.html?id=' + item.id">{{item.title}}</a></li>
    </ul>
   </div>  
   

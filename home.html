@@ -86,13 +86,13 @@ $("#jczw02 .w410 dl").eq(4).css('background', 'none');
 <div class="jcwz_nav" id="jczw01">
  <div class="w1200">
   <ul class="list_across">
-   <li class="first"><a href="./jcwz修改版本.html">首页</a></li>
-   <li><a href="./省直厅局修改1.0.html">省直厅局</a></li>
-   <li><a href="./市州区县.html">市州区县</a></li>
+   <li class="first"><a href="./home.html">首页</a></li>
+   <li><a href="./province.html">省直厅局</a></li>
+   <li><a href="./city.html">市州区县</a></li>
    <li><a href="">每日回复</a></li>
    <li><a href="">问政报告</a></li>
-   <li><a href="./回复量排行榜.html">回复率排行榜</a></li>
-   <li class="last"><a href="./满意度排行榜.html">满意度排行榜</a></li>
+   <li><a href="./reply.html">回复率排行榜</a></li>
+   <li class="last"><a href="./satisfied.html">满意度排行榜</a></li>
   </ul>
  </div>
 </div>
@@ -167,8 +167,8 @@ $("#jczw02 .w410 dl").eq(4).css('background', 'none');
   <div class="jcwz_szqx_list">
    <div class="box" v-for="(item,index) in arealist" :key="index">
     <ul class="list_erect" v-for="(subsitem,index) in item.city" :key="index">
-     <li><strong><a :href="'./市州区县三级.html?region_id='+'0'+'&area_name='+subsitem.name+'&province_id='+item.id+'&city_id='+subsitem.id">{{subsitem.name}}</a></strong></li> 
-     <li v-for="(childitem,index) in subsitem.county" :key="index"><a :href="'./市州区县三级.html?region_id='+childitem.id+'&area_name='+childitem.name+'&province_id='+item.id+'&city_id='+subsitem.id">{{childitem.name}}</a></li>
+     <li><strong><a :href="'./cityDetail.html?region_id='+'0'+'&area_name='+subsitem.name+'&province_id='+item.id+'&city_id='+subsitem.id">{{subsitem.name}}</a></strong></li>
+     <li v-for="(childitem,index) in subsitem.county" :key="index"><a :href="'./cityDetail.html?region_id='+childitem.id+'&area_name='+childitem.name+'&province_id='+item.id+'&city_id='+subsitem.id">{{childitem.name}}</a></li>
     </ul>
    </div>
   </div>
@@ -188,7 +188,7 @@ $("#jczw02 .w410 dl").eq(4).css('background', 'none');
   <div class="nav_box"><strong>省直厅局</strong></div>
   <div class="jcwz_sztj_bor">
    <ul class="list_across">
-    <li v-for="(item,index) in bureaulist" :key="index"><a :href="'./省直厅局三级.html?dept_id=' + item.dept_id + '&dept_name=' + item.dept_name">{{item.dept_name}}</a></li>
+    <li v-for="(item,index) in bureaulist" :key="index"><a :href="'./provinceDetail.html?dept_id=' + item.dept_id + '&dept_name=' + item.dept_name">{{item.dept_name}}</a></li>
    </ul>
   </div>
  </div>
@@ -251,7 +251,7 @@ $("#jczw02 .w410 dl").eq(4).css('background', 'none');
   <div class="nav_box"><strong>未回应留言</strong></div>
   <div class="blank10"></div>
   <ul class="list_across">
-   <li v-for="(item,index) in allsuglist3" :key="index"><a :href="'./三级页.html?id=' + item.id">{{item.title}}</a></li>      
+   <li v-for="(item,index) in allsuglist3" :key="index"><a :href="'./detail.html?id=' + item.id">{{item.title}}</a></li>
   </ul>
  </div>
 </div>
@@ -271,7 +271,7 @@ $("#jczw02 .w410 dl").eq(4).css('background', 'none');
    <div class="b_title_box"><span>省直</span><span class="right_span">点击率</span></div>
    <div class="phb_ulbox">
     <ul class="list_erect">
-      <li v-for="(item,index) in replytoplist" :key="index"><span :class="'li'+(index+1)">{{index+1}}</span><a :href="'./省直厅局三级.html?deptid=' + item.deptid">{{item.deptname}}</a><em>{{item.rate}}%</em></li>
+      <li v-for="(item,index) in replytoplist" :key="index"><span :class="'li'+(index+1)">{{index+1}}</span><a :href="'./provinceDetail.html?deptid=' + item.deptid">{{item.deptname}}</a><em>{{item.rate}}%</em></li>
     </ul>
    </div>
   </div> 
@@ -284,7 +284,7 @@ $("#jczw02 .w410 dl").eq(4).css('background', 'none');
    <div class="b_title_box"><span>省直</span><span class="right_span">满意度</span></div>
    <div class="phb_ulbox">
     <ul class="list_erect">
-      <li v-for="(item,index) in praisetoplist" :key="index"><span :class="'li'+(index+1)">{{index+1}}</span><a :href="'./省直厅局三级.html?deptid=' + item.deptid">{{item.deptname}}</a><em>{{item.rate}}%</em></li>
+      <li v-for="(item,index) in praisetoplist" :key="index"><span :class="'li'+(index+1)">{{index+1}}</span><a :href="'./provinceDetail.html?deptid=' + item.deptid">{{item.deptname}}</a><em>{{item.rate}}%</em></li>
     </ul>
    </div>
   </div>
