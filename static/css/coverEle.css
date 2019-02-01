@@ -1,0 +1,84 @@
+.login-input{
+  width: 500px;
+  margin: 0 auto;
+
+}
+.reg-code .el-form-item__content{
+
+}
+.reg-code .el-form-item__content .el-input{
+  float: left;
+  width: 310px;
+}
+.reg-code .el-form-item__content .el-btn{
+  float: right;
+}
+.reg-code .el-btn button{
+  width: 160px;
+  height: 64px;
+  margin: 20px auto;
+  background-color: #3D9EE1;
+  font-size: 20px;
+  color:#fff;
+}
+
+.login-input .el-input__inner{
+  height: 64px;
+  margin: 20px auto;
+}
+.login-btn button{
+  width: 100%;
+  height: 64px;
+  background-color: #3D9EE1;
+  font-size: 20px;
+  color:#fff;
+}
+.city-select{
+  display: flex;
+  justify-content: space-between;
+}
+.selsct_department{
+  width: 100%;
+}
+.large-btn-box button{
+  float: right;
+  height: 64px;
+  width: 240px;
+  background-color: #3D9EE1;
+  font-size: 20px;
+  color:#fff;
+  margin-left: 20px!important;
+}
+.concat .el-input{
+  width: 330px;
+}
+.concat-code .el-input{
+  width: 180px;
+}
+.el-step__main{
+margin-left: -20px;
+}
+.concat .el-form-item{
+  margin-top: 20px;
+}
+.btn-group button{
+  width: 166px;
+}
+.el-upload-list--picture-card .el-upload-list__item{
+  width: 100px;
+  height: 100px;
+}
+.el-upload--picture-card{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+}
+
+.concat .el-form-item__error{
+  margin-left: 70px;
+}
+
+.btn-group .el-button.is-disabled, .el-button.is-disabled:focus, .el-button.is-disabled:hover{
+  background-color:rgba(61, 158, 225, 1);
+  color: #fff;
+}
